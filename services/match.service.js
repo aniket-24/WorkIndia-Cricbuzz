@@ -1,10 +1,10 @@
 const db = require("../config/db");
 
-exports.createMatch = async (team1, team2, date, venue) => {
+exports.createMatch = async (team_1, team_2, date, venue) => {
   const sql =
-    "INSERT INTO match (team_1, team_2, date, venue) VALUES (?, ?, ?, ?)";
+    "INSERT INTO matches (team_1, team_2, date, venue) VALUES (?, ?, ?, ?)";
 
-  const [result] = await db.execute(sql, [team1, team2, date, venue]);
+  const [result] = await db.execute(sql, [team_1, team_2, date, venue]);
 
   return {
     message: "Match created successfully",
@@ -13,7 +13,7 @@ exports.createMatch = async (team1, team2, date, venue) => {
 };
 
 exports.getMatches = async () => {
-  const sql = "SELECT * FROM match";
+  const sql = "SELECT * FROM matches";
 
   const [matches] = await db.execute(sql);
 
@@ -49,7 +49,7 @@ exports.getMatchDetails = async (matchId) => {
         FROM player p
         WHERE p.team_id = (SELECT id FROM team WHERE name = m.team_2)
       ) AS team_2_squad
-    FROM match m
+    FROM matches m
     WHERE m.id = ?
   `;
 
@@ -58,6 +58,5 @@ exports.getMatchDetails = async (matchId) => {
   if (matchDetails.length === 0) {
     throw new Error("Match not found");
   }
-
   return matchDetails[0];
 };

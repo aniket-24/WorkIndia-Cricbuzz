@@ -1,15 +1,5 @@
 # SDE API Round - Cricbuzz Platform
 
-![alt text](image-2.png)
-
-NOTE: I have used "role" attribute for Role Based Access provision!!
-
-(It's important to pass role ["admin" or "guest"] in the signup and login)
-
-![alt text](image.png)
-
-![alt text](image-1.png)
-
 ## Prerequisites
 
 - Node.js (v14 or later)

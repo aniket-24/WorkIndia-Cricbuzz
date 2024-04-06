@@ -2,8 +2,8 @@ const matchService = require("../services/match.service");
 
 exports.createMatch = async (req, res) => {
   try {
-    const { team1, team2, date, venue } = req.body;
-    const result = await matchService.createMatch(team1, team2, date, venue);
+    const { team_1, team_2, date, venue } = req.body;
+    const result = await matchService.createMatch(team_1, team_2, date, venue);
     res.status(200).json(result);
   } catch (err) {
     res.status(500).json({ error: err.message });

@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 
 // Import routes
+const adminRoutes = require("./routes/admin.routes");
 const authRoutes = require("./routes/auth.routes");
 const matchRoutes = require("./routes/match.routes");
 const teamRoutes = require("./routes/team.routes");
@@ -12,7 +13,8 @@ const playerRoutes = require("./routes/player.routes");
 app.use(bodyParser.json());
 
 // Routes
-app.use("/api/admin", authRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/matches", matchRoutes);
 app.use("/api/teams", teamRoutes);
 app.use("/api/players", playerRoutes);

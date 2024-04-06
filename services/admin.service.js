@@ -28,12 +28,15 @@ exports.login = async (username, password) => {
     const token = jwt.sign({ id: results[0].id }, process.env.JWT_SECRET);
 
     return {
-      status: "Login successful",
+      status: "Admin Login successful",
       status_code: 200,
       user_id: results[0].id,
       access_token: token,
     };
   } else {
-    throw new Error("Incorrect username/password provided. Please retry");
+    return {
+      status: "Incorrect username/password provided. Please retry",
+      status_code: 401,
+    };
   }
 };
